@@ -1,0 +1,64 @@
+{  "script" : {
+      	"inline": "ctx._source.azukari_history.add(params.new_azukari_htr)”,
+   		"params" : {
+     		 “new_azukari_htr” : {
+      			"id": "10",
+      			"memo" : “content”
+     		 }
+   		 }
+	  }
+}
+
+
+{
+ 	"mappings": {
+ 		"customer_pay": {
+ 			"properties":{
+ 				"id" : {"type" : "keyword"},
+ 				"account_number" : {"type": "keyword"},
+ 				"receipts_date" : {"type": "date", "format": "yyyy-MM-dd HH:mm:ss.Z"},
+ 				"receipts_amount" : {"type": "long"},
+ 				"shop_code" : {"type" : "keyword"},
+ 				"np_transaction_id" : {"type" : "keyword"},
+ 				"transfer_name" : {"type": "text"},
+ 				"azukari_status_id" : {"type": "short"},
+ 				"azukari_histories": {
+ 				"type": "nested",
+ 				"properties": {
+ 				   "id": { "type": "keyword" },
+ 				   "memo": { "type": "text" }
+ 					}
+ 				}
+ 			}
+ 		}
+ 	}
+ }
+
+
+
+
+
+
+ {
+  	"mappings": {
+  		"customer_pay": {
+  			"properties":{
+  				"id" : {"type" : "keyword"},
+  				"account_number" : {"type": "keyword"},
+  				"receipts_date" : {"type": "keyword"},
+  				"receipts_amount" : {"type": "keyword"},
+  				"shop_code" : {"type" : "keyword"},
+  				"np_transaction_id" : {"type" : "keyword"},
+  				"transfer_name" : {"type": "text"},
+  				"azukari_status_id" : {"type": "keyword"},
+  				"azukari_histories": {
+  				"type": "nested",
+  				"properties": {
+  				   "id": { "type": "keyword" },
+  				   "memo": { "type": "text" }
+  					}
+  				}
+  			}
+  		}
+  	}
+  }

@@ -1,0 +1,50 @@
+https://local/supersonic
+PUT method
+{
+"settings": {
+   "index": {
+         "number_of_shards": 3,
+         "number_of_replicas": 2
+   },
+   "analysis": {
+     "analyzer": {
+       "analyzer-name": {
+         "type": "custom",
+         "tokenizer": "keyword",
+         "filter": "lowercase"
+       }
+     }
+   },
+   "mappings": {
+     "customer-pay": {
+       "properties": {
+         "id": {
+           "type": "long"
+         },
+         "account_number": {
+           "type": "keyword"
+         },
+         "receipts_date": {
+           "type": "date"
+         },
+         "receipts_amount": {
+           "type": "long"
+         },
+         "shop_code": {
+           "type": "keyword"
+         },
+         "np_transacton_id": {
+           "type": "keyword"
+         },
+         "transfer_name": {
+           "type": "string",
+           "analyzer": "analyzer-name"
+         },
+         "azukari_status_id": {
+           "type": "short"
+         }
+       }
+     }
+   }
+ }
+}
