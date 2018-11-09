@@ -52,6 +52,7 @@ with open(fname, 'rb') as csvfile:
             params = ""
             print("Number customer_pay record: " + str(total))
 
+
     if(count > 0):
         os.system("curl -XPOST '"
             + host
@@ -59,4 +60,5 @@ with open(fname, 'rb') as csvfile:
             + params)
         total = total + count
         print("Number customer_pay record: " + str(total))
+
 print("--- %s seconds ---" % (time.time() - start_time))
