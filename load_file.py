@@ -45,16 +45,18 @@ with open(fname, 'rb') as csvfile:
         if (count == 500):
             os.system("curl -XPOST '"
                 + host
-                + "' -H \"Content-Type: application/json\" -d " + params)
+                + "' -H \"Content-Type: application/json\" -d "
+                + params)
             total = total + count
             count = 0
             params = ""
-            print("Number record: " + str(total))
+            print("Number customer_pay record: " + str(total))
 
     if(count > 0):
         os.system("curl -XPOST '"
             + host
-            + "' -H \"Content-Type: application/json\" -d " + params)
+            + "' -H \"Content-Type: application/json\" -d "
+            + params)
         total = total + count
-        print("Number record: " + str(total))
+        print("Number customer_pay record: " + str(total))
 print("--- %s seconds ---" % (time.time() - start_time))

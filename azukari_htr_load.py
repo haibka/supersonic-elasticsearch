@@ -1,8 +1,11 @@
 # add more azukari_history to customer_pay
-
 import csv
 import os
 fname = "azukari_history.csv"
+host = "https://search-supersonic-mvgfqpixln7qd3ldpqpslpenra.ap-northeast-1.es.amazonaws.com/supersonic/customer_pay/_bulk"
+params = ""
+count = 0
+total = 0
 with open(fname, 'rb') as csvfile:
     spamreader = csv.reader(csvfile)
     for row in spamreader:
@@ -16,13 +19,35 @@ with open(fname, 'rb') as csvfile:
         memo = param.split(",")[7].strip()
         r_ymd = param.split(",")[12].strip()
 
-        print("insert id: " + id + "\n")
-        os.system("curl -XPOST 'https://search-super-sonic-3rbymj6u6ymc5squcbhge3vdla.ap-northeast-1.es.amazonaws.com/supersonic/customer_pay/"
-            + customer_pay_id + "/_update' -H \"Content-Type: application/json\" -d \"{  \\\"script\\\" : {"
-            + "\\\"inline\\\": \\\"ctx._source.azukari_histories.add(params.new_azukari_htr)\\\", \\\"params\\\" : { \\\"new_azukari_htr\\\" : { "
-            + "\\\"id\\\": \\\"" + id + "\\\","
-          	+ "\\\"memo\\\" :\\\"" +  memo + "\\\""
-            + "}"
-        	+ "}"
-            + "}"
-            + "}\"")
+        params = params + "\"{ \\\"update\\\" : {\\\"_id\\\" : \\\"" + customer_pay_id + "\\\", \\\"_retry_on_conflict\\\" : 3} }\n\"" \
+        + "\"{  \\\"script\\\" : {" \
+        + "\\\"inline\\\": \\\"ctx._source.azukari_histories.add(params.new_azukari_htr)\\\", \\\"lang\\\" : \\\"painless\\\", " \
+        + "\\\"params\\\" : { \\\"new_azukari_htr\\\" : { " \
+        + "\\\"id\\\": \\\"" + id + "\\\"," \
+        + "\\\"ir_flg\\\" :\\\"" +  ir_flg + "\\\"," \
+        + "\\\"action_id\\\" :\\\"" +  action_id + "\\\"," \
+        + "\\\"furikae_status_id\\\" :\\\"" +  furikae_status_id + "\\\"," \
+        + "\\\"azukari_status_id\\\" :\\\"" +  azukari_status_id + "\\\"," \
+        + "\\\"memo\\\" :\\\"" +  memo + "\\\"," \
+        + "\\\"r_ymd\\\" :\\\"" +  r_ymd + "\\\"" \
+        + "}" \
+        + "}" \
+        + "}" \
+        + "}\n\""
+        count = count + 1
+        if (count == 500):
+            os.system("curl -XPOST '"
+                + host
+                + "' -H \"Content-Type: application/json\" -d "
+                + params )
+            total = total + count
+            count = 0
+            params = ""
+            print("Number azukari_history record: " + str(total))
+    if(count > 0):
+        os.system("curl -XPOST '"
+            + host
+            + "' -H \"Content-Type: application/json\" -d "
+            + params )
+        total = total + count
+        print("Number azukari_history record: " + str(total))
