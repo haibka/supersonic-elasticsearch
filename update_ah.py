@@ -1,9 +1,9 @@
 # update customer_pay
 import os
 memo = "dekiru2"
-customer_pay_id = "52866603"
-id = "980"
-os.system("curl -XPOST 'https://search-supersonic-mvgfqpixln7qd3ldpqpslpenra.ap-northeast-1.es.amazonaws.com/supersonic/customer_pay/"
+customer_pay_id = "52375223"
+id = "1001"
+os.system("curl -XPOST 'https://search-super-sonic-3rbymj6u6ymc5squcbhge3vdla.ap-northeast-1.es.amazonaws.com/supersonic/customer_pay/"
     + customer_pay_id + "/_update'"
     + " -H \"Content-Type: application/json\" -d \"{"
     + "\\\"script\\\":{"
