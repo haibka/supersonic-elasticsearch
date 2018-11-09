@@ -59,6 +59,6 @@ with open(fname, 'rb') as csvfile:
             + "' -H \"Content-Type: application/json\" -d "
             + params)
         total = total + count
-        print("Number customer_pay record: " + str(total))
 
-print("--- %s seconds ---" % (time.time() - start_time))
+        print("Number record: " + str(total))
+print("--- %s seconds ---" % (time.time() - start_time)) # calculate program run time
