@@ -1,19 +1,20 @@
-import adodbapi
+import pyodbc
 
-def try_connection():
+server = 'localhost,11433'
+database = 'VOneG3'
+username = 'Administrator'
+password = 'i04npsys'
+cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';trusted_connection=yes;UID='+username+';PWD='+ password)
+cursor = cnxn.cursor()
+print ('Inserting a new row into table')
 
-	db_prov = 'SQLOLEDB' # ADO can use OLE
-	db_serv = 'st-vone-db.c50hlo4hzhce.ap-northeast-1.rds.amazonaws.com,1433'
-	db_user = 'Administrator'
-	db_pass = 'i04npsys'
-	db_name = 'VOneG3'
 
-	conn_string = 'Provider=%s;Data Source=%s;Initial Catalog=%s;User ID=%s;Password=%s;' % ( db_prov, db_serv, db_name, db_user, db_pass )
-
-	#adodbapi.adodbapi.verbose = True
-	conn = adodbapi.connect( conn_string )
-
-	#return type( conn )
-	return 'Connected'
-
-print( try_connection() )
+# import pyodbc
+# conn = pyodbc.connect("DRIVER={{SQL Server}};SERVER={0}; database={1}; \
+#        trusted_connection=yes;UID={2};PWD={3}".format(server,MSQLDatabase,username,password))
+# cursor = conn.cursor()
+# 
+# import pydobc
+#
+# def lambda_handler(event, context):
+#     cnxn = pyodbc.connect('DRIVER={SQL Server};SERVER=servername.account.region.rds.amazonaws.com,port;DATABASE=database;UID=user;PWD=password')
