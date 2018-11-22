@@ -1,0 +1,38 @@
+{
+  "messageId": "17efe610-bd36-436f-8fb0-fc8e2a0735d8",
+  "receiptHandle": "AQEBFBs7apKDCKesbGPariT6jk5HZobXXfShJ7AHHzf9dCTDEg7W52pUh5o0vM5gXeqICfThithp7PjY5x0OmKp/x7csNgFZUFCGook0ZFb0zj6snLt/BqIOKmGl9DoBqGpCombX44IWb6qR9dhGlk4dU71taHyOrRKnLLvjGVJnDTAXpZRBD6p2awY0USJyUvLfvIenSyW77sbM6aeokNq5NwbQumTc0CmMFgL0lEUivpiEcY9ArETJWZ/NNWbgZS9GYxpVCbwAY/iUVKYXXRUn7acs3PcG+GHNVsE2Fp7DbqrHYcQ9RJ4uJvnzj5NaUG0J5mom8xspauWrOY0CEQjvYNH3q5wysdMGp1kD9WyWNIQWDJRgEvKlnz2Vttbiv6vwHkXj3S84ATEYSmXHjVSQ3w==",
+  "body": "Change Tracking",
+  "attributes":{
+    "ApproximateReceiveCount": "1",
+    "SentTimestamp": "1542158912652",
+    "SenderId": "AIDAJV64S7RWGPL2COQAO",
+    "ApproximateFirstReceiveTimestamp": "1542158912656"
+  },
+  "messageAttributes": {
+    "ID": {
+       "stringValue": "14",
+       "stringListValues": [],
+       "binaryListValues": [],
+       "dataType": "Number"},
+    "SYS_CHANGE_OPERATION": {
+       "stringValue": "I",
+       "stringListValues": [],
+       "binaryListValues": [],
+       "dataType": "String"},
+    "AGE": {
+       "stringValue": "10",
+       "stringListValues": [],
+       "binaryListValues": [],
+       "dataType": "String"},
+    "NAME": {
+       "stringValue": "Hoang Manh",
+       "stringListValues": [],
+       "binaryListValues": [],
+       "dataType": "Number"}
+    },
+    "md5OfBody": "4175df797e9b976d4c677fb0222f41a9",
+    "md5OfMessageAttributes": "8992e6265b8df66941a1f06e64ac97e1",
+    "eventSource": "aws:sqs",
+    "eventSourceARN": "arn:aws:sqs:ap-northeast-1:898942717313:supersonic",
+    "awsRegion": "ap-northeast-1"
+}
